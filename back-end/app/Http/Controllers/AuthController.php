@@ -16,6 +16,7 @@ class AuthController extends Controller
 {
     public function createUser(Request $request): JsonResponse
     {
+        // dd(User::all());
         try {
             $validateUser = Validator::make(
                 $request->all(),
@@ -40,13 +41,11 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            $user->assignRole('cliente');
 
             return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',
-                'user' => [$user, $user->roles],
-                'token' => $user->createToken('API TOKEN')->plainTextToken,
+                'token' => $user->createToken('API TOKEN')->accessToken,
             ], 200);
         } catch (Throwable $th) {
             return response()->json([
@@ -86,7 +85,6 @@ class AuthController extends Controller
             return ApiResponseDTO::success(200, data: new AuthCollection(
                 [
                     'user' => $user,
-                    "roles" => $user->roles,
                     'token' => $user->createToken('API_TOKEN')->accessToken,
                 ]
             ))->toJson();

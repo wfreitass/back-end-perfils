@@ -14,7 +14,7 @@ class AuthCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        // return array($this->collection);
-        return parent::toArray($request);
+        return array($this->collection);
+        // return parent::toArray($request);
     }
 }

@@ -1,1 +1,28 @@
-<h1>Formulário burro</h1>
+<div class="form-container">
+    <h2>Criar Nova Tarefa</h2>
+    <!-- Mensagem de sucesso ou erro -->
+    <div *ngIf="sucesso" class="alert alert-success">{{ sucesso }}</div>
+    <div *ngIf="erro" class="alert alert-danger">{{ erro }}</div>
+
+    <!-- Formulário -->
+    <form [formGroup]="tarefaForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="titulo">Título</label>
+            <input id="titulo" type="text" formControlName="titulo" />
+            <small *ngIf="tarefaForm.get('titulo')?.invalid && tarefaForm.get('titulo')?.touched">
+                Título é obrigatório e deve ter no máximo 100 caracteres.
+            </small>
+        </div>
+
+        <div>
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" formControlName="descricao"></textarea>
+            <!-- <small *ngIf="tarefaForm.get('descricao')?.invalid && tarefaForm.get('descricao')?.touched">
+                Descrição é obrigatória e deve ter no máximo 500 caracteres.
+            </small> -->
+        </div>
+
+
+        <button type="submit" [disabled]="tarefaForm.invalid"> {{ modoEdicao ? 'Atualizar' : 'Criar' }} Tarefa</button>
+    </form>
+</div>

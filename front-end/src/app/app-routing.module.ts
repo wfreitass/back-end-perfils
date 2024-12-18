@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'listagem-tarefas', component: ListagemTarefasComponent },
   { path: 'formulario-tarefas', component: FormularioTarefasComponent },
+  { path: 'formulario-tarefas/editar/:id', component: FormularioTarefasComponent },
 
 ];
 

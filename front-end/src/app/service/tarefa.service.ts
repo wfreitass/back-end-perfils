@@ -8,10 +8,10 @@ import { ApiResponse } from '../interfaces/ApiResponse.interface';
   providedIn: 'root'
 })
 export class TarefaService {
-    private apiUrl = 'http://127.0.0.1:8000/api/tarefa';
+  private apiUrl = 'http://127.0.0.1:8000/api/tarefa';
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Buscar todas as tarefas
   getTarefas(): Observable<ApiResponse<Tarefa[]>> {
@@ -21,6 +21,15 @@ export class TarefaService {
   // Creiar tarefas
   criarTarefa(tarefa: Partial<Tarefa>): Observable<ApiResponse<Tarefa>> {
     return this.http.post<ApiResponse<Tarefa>>(this.apiUrl, tarefa);
+  }
+
+  // Atualizar tarefas
+  atualizarTarefa(id: number, tarefa: Partial<Tarefa>): Observable<ApiResponse<Tarefa>> {
+    return this.http.put<ApiResponse<Tarefa>>(`${this.apiUrl}/${id}`, tarefa);
+  }
+
+  carregarTarefa(id: number): Observable<ApiResponse<Tarefa>> {
+    return this.http.get<ApiResponse<Tarefa>>(`${this.apiUrl}/${id}`);
   }
 
   // Buscar tarefas por status (usando o enum)

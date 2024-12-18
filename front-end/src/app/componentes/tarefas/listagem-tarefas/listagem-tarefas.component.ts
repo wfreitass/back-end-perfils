@@ -59,4 +59,15 @@ export class ListagemTarefasComponent {
       });
     }
   }
+
+  // Busca todas as tarefas
+  finalizarTarefa(id: number): void {
+    this.tarefaService.finalizarTarefa(id).subscribe({
+      next: (response) => {
+        // this.tarefas = response;
+        this.buscarTarefas()
+      },
+      error: (err) => console.error('Erro ao buscar tarefas', err)
+    });
+  }
 }

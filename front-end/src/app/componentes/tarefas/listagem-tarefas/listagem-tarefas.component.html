@@ -11,7 +11,7 @@
     <td>{{tarefa.titulo}}</td>
     <td>{{tarefa.status}}</td>
     <td>
-      <button>Finalizar</button>
+      <button (click)="finalizarTarefa(tarefa.id)">Finalizar</button>
       <button (click)="editarTarefa(tarefa.id)">Editar</button>
       <button (click)="deletarTarefa(tarefa.id)" style="color: red;">Excluir</button>
     </td>

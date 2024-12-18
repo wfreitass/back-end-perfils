@@ -28,6 +28,7 @@ export class TarefaService {
     return this.http.put<ApiResponse<Tarefa>>(`${this.apiUrl}/${id}`, tarefa);
   }
 
+  //Carregar os dados quem vem do DB
   carregarTarefa(id: number): Observable<ApiResponse<Tarefa>> {
     return this.http.get<ApiResponse<Tarefa>>(`${this.apiUrl}/${id}`);
   }
@@ -36,8 +37,12 @@ export class TarefaService {
   getTarefasPorStatus(status: string): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(`${this.apiUrl}?status=${status}`);
   }
-
+  //Apagar uma tarefa
   deletarTarefa(id: number): Observable<ApiResponse<null>> {
     return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/${id}`);
+  }
+  //Finalizar
+  finalizarTarefa(id: number): Observable<ApiResponse<Tarefa>> {
+    return this.http.put<ApiResponse<Tarefa>>(`${this.apiUrl}/finalizar/${id}`, {});
   }
 }

@@ -108,7 +108,7 @@ class TarefaController extends Controller
             $tarefa =  $this->tarefaService->finalizar($tarefa->id);
             return ApiResponseDTO::success(201, data: new TarefaResource($tarefa))->toJson();
         } catch (\Throwable $th) {
-            return ApiResponseDTO::success(400, message: $th->getMessage())->toJson();
+            return ApiResponseDTO::error(400, message: $th->getMessage())->toJson();
         }
     }
 }

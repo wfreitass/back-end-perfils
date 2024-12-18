@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,5 +53,17 @@ class User extends Authenticatable
     public function tarefas(): HasMany
     {
         return $this->hasMany(Tarefa::class);
+    }
+    /**
+     * Scope para pegar usuário com o devido email!
+     * @param Builder $query
+     * @param string $email
+     * 
+     * @return void
+     * 
+     */
+    public function scopeOfEmail(Builder $query, string $email): void
+    {
+        $query->where('email', $email);
     }
 }

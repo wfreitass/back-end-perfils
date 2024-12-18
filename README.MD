@@ -28,7 +28,6 @@ Uso das camadas adicionais de Interfaces, Repositories e Services:
 - **Migrations** para a estruturação do banco de dados:
   - Criação de tabelas e definição de relacionamentos.
   - Utilização de chaves estrangeiras para garantir integridade referencial.
-  - **Seeders e Factories** para população inicial do banco de dados.
 
 ### Autenticação
 

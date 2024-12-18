@@ -18,6 +18,7 @@ Arquitetura baseada no padrão MVC (Model-View-Controller).
 
 Uso das camadas adicionais de Interfaces, Repositories e Services:
 
+- **TDD**: Test-driven development (algo básico apenas para demonstração).
 - **Interfaces**: Definem os contratos para as implementações dos repositories e services.
 - **Repositories**: Manipulam diretamente os modelos e consultas ao banco de dados.
 - **Services**: Contêm a lógica de negócio.
@@ -28,6 +29,7 @@ Uso das camadas adicionais de Interfaces, Repositories e Services:
 - **Migrations** para a estruturação do banco de dados:
   - Criação de tabelas e definição de relacionamentos.
   - Utilização de chaves estrangeiras para garantir integridade referencial.
+  - **Seeders e Factories** para população inicial do banco de dados.
 
 ### Autenticação
 

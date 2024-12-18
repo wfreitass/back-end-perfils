@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListagemTarefasComponent } from './componentes/tarefas/listagem-tarefas/listagem-tarefas.component';
 import { FormularioTarefasComponent } from './componentes/tarefas/formulario-tarefas/formulario-tarefas.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ResgistrarComponent } from './resgistrar/resgistrar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LayoutComponent } from './layout/layout.component';
     LoginComponent,
     ListagemTarefasComponent,
     FormularioTarefasComponent,
-    LayoutComponent
+    LayoutComponent,
+    ResgistrarComponent
   ],
   imports: [
     BrowserModule,

@@ -20,17 +20,24 @@ class AuthController extends Controller
     public function createUser(CreateUserRequest $request): JsonResponse
     {
         try {
+            if (User::ofEmail($request->email)->first()) {
+                return ApiResponseDTO::error(500, message: "Email cadastrado na base, escolha outro")->toJson();
+            }
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
 
-            return response()->json([
-                'status' => true,
-                'message' => 'User Created Successfully',
-                'token' => $user->createToken('API TOKEN')->accessToken,
-            ], 200);
+            return ApiResponseDTO::success(200, data: new AuthCollection(
+                [
+                    'user' => $user,
+                    'status' => true,
+                    'message' => 'Usuário Criado com sucesso',
+                    'token' => $user->createToken('API TOKEN')->accessToken,
+                ]
+            ))->toJson();
         } catch (Throwable $th) {
             return ApiResponseDTO::error(500, message: $th->getMessage(), errors: $th)->toJson();
         }

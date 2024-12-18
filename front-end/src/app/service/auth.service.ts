@@ -26,4 +26,7 @@ export class AuthService {
     return localStorage.getItem('user') !== null;
   }
 
+  cadastrarUsuario(usuario: { nome: string; email: string; senha: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, usuario);
+  }
 }

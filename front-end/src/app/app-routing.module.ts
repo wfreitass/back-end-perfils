@@ -5,6 +5,7 @@ import { ListagemTarefasComponent } from './componentes/tarefas/listagem-tarefas
 import { FormularioTarefasComponent } from './componentes/tarefas/formulario-tarefas/formulario-tarefas.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Rota padrão
   { path: 'login', component: LoginComponent },
   { path: 'listagem-tarefas', component: ListagemTarefasComponent },
   { path: 'formulario-tarefas', component: FormularioTarefasComponent },

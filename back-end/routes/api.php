@@ -15,3 +15,4 @@ Route::prefix('auth')->group(function (): void {
 });
 
 Route::middleware(['auth:api'])->resource('tarefa', TarefaController::class);
+Route::middleware(['auth:api'])->put("tarefa/finalizar/{tarefa}", [TarefaController::class, "finalizar"]);

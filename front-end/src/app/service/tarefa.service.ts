@@ -36,4 +36,8 @@ export class TarefaService {
   getTarefasPorStatus(status: string): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(`${this.apiUrl}?status=${status}`);
   }
+
+  deletarTarefa(id: number): Observable<ApiResponse<null>> {
+    return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/${id}`);
+  }
 }

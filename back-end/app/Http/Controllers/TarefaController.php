@@ -97,4 +97,18 @@ class TarefaController extends Controller
             return ApiResponseDTO::success(400, message: $th->getMessage())->toJson();
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function finalizar(Tarefa $tarefa)
+    {
+
+        try {
+            $tarefa =  $this->tarefaService->finalizar($tarefa->id);
+            return ApiResponseDTO::success(201, data: new TarefaResource($tarefa))->toJson();
+        } catch (\Throwable $th) {
+            return ApiResponseDTO::success(400, message: $th->getMessage())->toJson();
+        }
+    }
 }

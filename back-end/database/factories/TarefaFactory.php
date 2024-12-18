@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,14 @@ class TarefaFactory extends Factory
      */
     public function definition(): array
     {
+        $idUser =  User::factory()->create()->id;
         return [
-            //
+            'titulo' => $this->faker->sentence(3),
+            'descricao' => $this->faker->paragraph(),
+            'status' => $this->faker->randomElement(['pendente', 'concluida']),
+            'user_id' => $idUser,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

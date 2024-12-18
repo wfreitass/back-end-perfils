@@ -12,7 +12,7 @@
       <tr *ngFor="let tarefa of tarefas ; let index  = index ">
         <td>{{index + 1}}</td>
         <td>{{tarefa.titulo}}</td>
-        <td>{{tarefa.status}}</td>
+        <td [ngClass]="getCorStatus(tarefa)">{{tarefa.status}}</td>
         <td>
           <button class="btn btn-success btn-sm" (click)="finalizarTarefa(tarefa.id)">
             Finalizar

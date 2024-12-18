@@ -1,4 +1,4 @@
 export enum TarefaStatus {
-    PENDENTE = 'Pendente',
-    CONCLUIDA = 'Concluída'
-  }
+  PENDENTE = 'pendente',
+  CONCLUIDA = 'concluido'
+}

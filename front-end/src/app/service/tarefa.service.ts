@@ -34,9 +34,10 @@ export class TarefaService {
   }
 
   // Buscar tarefas por status (usando o enum)
-  getTarefasPorStatus(status: string): Observable<Tarefa[]> {
-    return this.http.get<Tarefa[]>(`${this.apiUrl}?status=${status}`);
-  }
+  // getTarefasPorStatus(status: string): Observable<Tarefa[]> {
+  //   return this.http.get<Tarefa[]>(`${this.apiUrl}?status=${status}`);
+  // }
+
   //Apagar uma tarefa
   deletarTarefa(id: number): Observable<ApiResponse<null>> {
     return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/${id}`);
@@ -45,4 +46,7 @@ export class TarefaService {
   finalizarTarefa(id: number): Observable<ApiResponse<Tarefa>> {
     return this.http.put<ApiResponse<Tarefa>>(`${this.apiUrl}/finalizar/${id}`, {});
   }
+
+
+
 }

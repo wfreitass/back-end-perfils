@@ -30,6 +30,7 @@ class TarefaController extends Controller
     {
         try {
             return ApiResponseDTO::success(data: TarefaResource::collection($this->tarefaService->all()))->toJson();
+            // return TarefaResource::collection($this->tarefaService->all());
         } catch (\Throwable $th) {
             return ApiResponseDTO::error(400, message: $th->getMessage())->toJson();
         }

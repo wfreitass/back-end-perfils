@@ -4,11 +4,13 @@ namespace App\Observers;
 
 use App\Enums\StatusEnum;
 use App\Models\Tarefa;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
 class TarefaObserver
 {
+
 
     /**
      * @param Tarefa $tarefa
@@ -16,7 +18,7 @@ class TarefaObserver
      */
     public function creating(Tarefa $tarefa)
     {
-        $tarefa->user_id = Auth::id();
+        $tarefa->user_id = Auth::id() ?? User::first()->id;
         $tarefa->status = StatusEnum::PENDENTE;
     }
 

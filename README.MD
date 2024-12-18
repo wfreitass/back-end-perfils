@@ -26,6 +26,7 @@ Uso das camadas adicionais de Interfaces, Repositories e Services:
 ### Recursos Utilizados
 
 - **Enums** para o status das entidades, garantindo consistência e validação dos dados.
+- **Observers** para o status das entidades e cadastro de tarefas.
 - **Migrations** para a estruturação do banco de dados:
   - Criação de tabelas e definição de relacionamentos.
   - Utilização de chaves estrangeiras para garantir integridade referencial.

@@ -65,7 +65,7 @@ export class FormularioTarefasComponent {
           next: () => {
             this.sucesso = 'Tarefa atualizada com sucesso!';
             this.erro = null;
-            this.router.navigate(['/tarefas']);
+            this.router.navigate(['/listagem-tarefas']);
           },
           error: (err) => {
             this.erro = 'Erro ao atualizar a tarefa.';
@@ -80,7 +80,7 @@ export class FormularioTarefasComponent {
             this.sucesso = 'Tarefa criada com sucesso!';
             this.erro = null;
             this.tarefaForm.reset();
-            this.router.navigate(['/tarefas']);
+            this.router.navigate(['/listagem-tarefas']);
           },
           error: (err) => {
             this.erro = 'Erro ao criar a tarefa.';

@@ -1,28 +1,33 @@
-<div class="form-container">
-    <h2>Criar Nova Tarefa</h2>
-    <!-- Mensagem de sucesso ou erro -->
-    <div *ngIf="sucesso" class="alert alert-success">{{ sucesso }}</div>
-    <div *ngIf="erro" class="alert alert-danger">{{ erro }}</div>
+<app-layout [pageTitle]=" modoEdicao ? 'Editar Tarefa' : 'Criar Nova Tarefa' ">
 
-    <!-- Formulário -->
-    <form [formGroup]="tarefaForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label for="titulo">Título</label>
-            <input id="titulo" type="text" formControlName="titulo" />
-            <small *ngIf="tarefaForm.get('titulo')?.invalid && tarefaForm.get('titulo')?.touched">
-                Título é obrigatório e deve ter no máximo 100 caracteres.
-            </small>
-        </div>
+    <div class="container ">
 
-        <div>
-            <label for="descricao">Descrição</label>
-            <textarea id="descricao" formControlName="descricao"></textarea>
-            <!-- <small *ngIf="tarefaForm.get('descricao')?.invalid && tarefaForm.get('descricao')?.touched">
-                Descrição é obrigatória e deve ter no máximo 500 caracteres.
-            </small> -->
-        </div>
+        <!-- Mensagens de sucesso ou erro -->
+        <div *ngIf="sucesso" class="alert alert-success">{{ sucesso }}</div>
+        <div *ngIf="erro" class="alert alert-danger">{{ erro }}</div>
 
+        <!-- Formulário -->
+        <form [formGroup]="tarefaForm" (ngSubmit)="onSubmit()">
+            <!-- Campo Título -->
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input id="titulo" type="text" class="form-control" formControlName="titulo" />
+                <div *ngIf="tarefaForm.get('titulo')?.invalid && tarefaForm.get('titulo')?.touched"
+                    class="invalid-feedback">
+                    Título é obrigatório e deve ter no máximo 100 caracteres.
+                </div>
+            </div>
 
-        <button type="submit" [disabled]="tarefaForm.invalid"> {{ modoEdicao ? 'Atualizar' : 'Criar' }} Tarefa</button>
-    </form>
-</div>
+            <!-- Campo Descrição -->
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea id="descricao" class="form-control" formControlName="descricao"></textarea>
+            </div>
+
+            <!-- Botão de Submit -->
+            <button type="submit" class="btn btn-primary" [disabled]="tarefaForm.invalid">
+                {{ modoEdicao ? 'Atualizar' : 'Criar' }} Tarefa
+            </button>
+        </form>
+    </div>
+</app-layout>

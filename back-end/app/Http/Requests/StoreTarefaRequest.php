@@ -24,7 +24,7 @@ class StoreTarefaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "titulo" => "required|max:255",
+            "titulo" => "required|max:255|min:3",
         ];
     }
 
@@ -50,7 +50,8 @@ class StoreTarefaRequest extends FormRequest
     {
         return [
             'titulo.required' => 'titulo é um campo obrigatório',
-            'titulo.max' => 'titulo tem o tamanho máximo de 255',
+            'titulo.max' => 'titulo tem o tamanho máximo de :max',
+            'titulo.min' => 'titulo tem o tamanho mínimo de :min',
 
         ];
     }

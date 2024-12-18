@@ -1,0 +1,41 @@
+<!-- Menu de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Task.IO</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <!-- Dropdown de Tarefas -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Tarefas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/formulario-tarefas">Nova Tarefa</a></li>
+                        <li><a class="dropdown-item" routerLink="/listagem-tarefas">Lista de Tarefas</a></li>
+                        <!-- <li><a class="dropdown-item" href="#">Tarefas Concluídas</a></li> -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex justify-content-end align-items-center">
+            <span class="navbar-text me-3">Bem-vindo, {{ username }}</span>
+            <button class="btn btn-danger" (click)="logout()">Sair</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row w-100">
+        <h1>{{ pageTitle }}</h1>
+        <ng-content></ng-content>
+    </div>
+</div>

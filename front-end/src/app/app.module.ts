@@ -9,13 +9,15 @@ import { AuthInterceptorService } from './service/auth-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListagemTarefasComponent } from './componentes/tarefas/listagem-tarefas/listagem-tarefas.component';
 import { FormularioTarefasComponent } from './componentes/tarefas/formulario-tarefas/formulario-tarefas.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ListagemTarefasComponent,
-    FormularioTarefasComponent
+    FormularioTarefasComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

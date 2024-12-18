@@ -20,14 +20,6 @@ export class ListagemTarefasComponent {
   ) { }
 
   ngOnInit() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.username = JSON.parse(user).name; // Presume que a API retorna o nome do usuário
-    } else {
-      // Caso não haja usuário, redirecione para o login
-      this.router.navigate(['/login']);
-    }
-
     this.buscarTarefas();
   }
 

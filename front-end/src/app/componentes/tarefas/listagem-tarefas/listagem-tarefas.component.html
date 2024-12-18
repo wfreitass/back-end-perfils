@@ -1,19 +1,30 @@
-<h1>Bem-vindo, {{ username }}!</h1>
-<table>
-  <tr>
-    <th>id</th>
-    <th>titulo </th>
-    <th>status</th>
-    <th>ações</th>
-  </tr>
-  <tr *ngFor="let tarefa of tarefas">
-    <td>{{tarefa.id}}</td>
-    <td>{{tarefa.titulo}}</td>
-    <td>{{tarefa.status}}</td>
-    <td>
-      <button (click)="finalizarTarefa(tarefa.id)">Finalizar</button>
-      <button (click)="editarTarefa(tarefa.id)">Editar</button>
-      <button (click)="deletarTarefa(tarefa.id)" style="color: red;">Excluir</button>
-    </td>
-  </tr>
-</table>
+<app-layout pageTitle="Listagem de tarefas">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Título</th>
+        <th scope="col">Status</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarefa of tarefas">
+        <td>{{tarefa.id}}</td>
+        <td>{{tarefa.titulo}}</td>
+        <td>{{tarefa.status}}</td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="finalizarTarefa(tarefa.id)">
+            Finalizar
+          </button>
+          <button class="btn btn-warning btn-sm mx-2" (click)="editarTarefa(tarefa.id)">
+            Editar
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="deletarTarefa(tarefa.id)">
+            Excluir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</app-layout>

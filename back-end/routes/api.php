@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\TarefaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,5 +15,6 @@ Route::prefix('auth')->group(function (): void {
         ->middleware('auth:api');
 });
 
+Route::middleware(['auth:api'])->resource('perfil', PerfilController::class);
 Route::middleware(['auth:api'])->resource('tarefa', TarefaController::class);
 Route::middleware(['auth:api'])->put("tarefa/finalizar/{tarefa}", [TarefaController::class, "finalizar"]);

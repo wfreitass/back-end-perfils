@@ -19,6 +19,7 @@ class AuthController extends Controller
 {
     public function createUser(CreateUserRequest $request): JsonResponse
     {
+
         try {
             if (User::ofEmail($request->email)->first()) {
                 return ApiResponseDTO::error(500, message: "Email cadastrado na base, escolha outro")->toJson();

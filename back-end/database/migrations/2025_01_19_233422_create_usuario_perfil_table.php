@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarefas', function (Blueprint $table) {
-            $table->id();
-            $table->string("titulo");
-            $table->text("descricao")->nullable();
-            $table->enum('status', ['pendente', 'concluido']);
-            $table->foreignId("user_id")->constrained('users');
+        Schema::create('user_perfil', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('perfil_id')->constrained('perfils')->onDelete('cascade');
             $table->timestamps();
+
+            $table->primary(['user_id', 'perfil_id']); // Evita duplicações
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarefas');
+        Schema::dropIfExists('user_perfil');
     }
 };

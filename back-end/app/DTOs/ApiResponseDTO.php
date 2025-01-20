@@ -20,12 +20,12 @@ class ApiResponseDTO
         $this->errors = $errors;
     }
 
-    public static function success($status = 200, $data = null, $message = 'Operation successful')
+    public static function success($status = 200, $data = null, $message = 'Requisição realizada com sucesso')
     {
         return new self($status, $message, $data);
     }
 
-    public static function error($status = 400, $message = 'Operation failed', $errors = null)
+    public static function error($status = 400, $message = 'Requisição falhou', $errors = null)
     {
         return new self($status, $message, null, $errors);
     }

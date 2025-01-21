@@ -59,7 +59,7 @@ class User extends Authenticatable
      */
     public function perfils(): BelongsToMany
     {
-        return $this->belongsToMany(Perfil::class, 'user_perfil');
+        return $this->belongsToMany(Perfil::class, 'user_perfil', 'user_id', 'perfil_id');
     }
 
     /**
@@ -73,5 +73,21 @@ class User extends Authenticatable
     public function scopeOfEmail(Builder $query, string $email): void
     {
         $query->where('email', $email);
+    }
+
+
+    /**
+     *
+     * @return bool
+     * 
+     */
+    public function isAdmin(): bool
+    {
+        $perfils = $this->perfils;
+        return  $perfils->contains(
+            function ($perfil, $key) {
+                return $perfil->nome == "Admin" ? true : false;
+            }
+        );
     }
 }

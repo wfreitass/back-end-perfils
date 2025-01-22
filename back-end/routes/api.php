@@ -21,5 +21,3 @@ Route::post("syncperfils/{usuario}", [UsuarioController::class, "syncPerfils"])-
 
 
 Route::middleware(['auth:api'])->resource('perfil', PerfilController::class);
-Route::middleware(['auth:api'])->resource('tarefa', TarefaController::class);
-Route::middleware(['auth:api'])->put("tarefa/finalizar/{tarefa}", [TarefaController::class, "finalizar"]);

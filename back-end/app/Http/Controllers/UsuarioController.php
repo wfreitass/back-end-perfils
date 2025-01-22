@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DTOs\ApiResponseDTO;
 use App\Http\Requests\StoreUsuarioRequest;
+use App\Http\Requests\UpdateUsuarioRequest;
 use App\Http\Resources\UsuarioResource;
 use App\Interfaces\UsuarioServiceInterface;
 use App\Models\User;
@@ -71,15 +72,18 @@ class UsuarioController extends Controller
         } catch (\Throwable $th) {
             return ApiResponseDTO::error(400, message: $th->getMessage())->toJson();
         }
-        dd($request->all(), $user);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $usuario)
     {
-        //
+        try {
+            return ApiResponseDTO::success(200, data: new UsuarioResource($usuario))->toJson();
+        } catch (\Throwable $th) {
+            return ApiResponseDTO::success(400, message: $th->getMessage())->toJson();
+        }
     }
 
     /**
@@ -93,9 +97,18 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUsuarioRequest $request,  $id)
     {
-        //
+        try {
+            $usuario = $this->usuarioService->update($id, $request->only([
+                'name',
+                'email',
+                'password',
+            ]));
+            return ApiResponseDTO::success(201, data: new UsuarioResource($usuario))->toJson();
+        } catch (\Throwable $th) {
+            return ApiResponseDTO::error(400, message: $th->getMessage())->toJson();
+        }
     }
 
     /**

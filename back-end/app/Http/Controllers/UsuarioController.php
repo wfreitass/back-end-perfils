@@ -28,15 +28,11 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        try {
+            return ApiResponseDTO::success(data: UsuarioResource::collection($this->usuarioService->all()))->toJson();
+        } catch (\Throwable $th) {
+            return ApiResponseDTO::error(400, message: $th->getMessage())->toJson();
+        }
     }
 
     /**
@@ -86,13 +82,6 @@ class UsuarioController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -109,13 +98,5 @@ class UsuarioController extends Controller
         } catch (\Throwable $th) {
             return ApiResponseDTO::error(400, message: $th->getMessage())->toJson();
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

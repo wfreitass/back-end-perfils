@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
 
@@ -54,7 +55,7 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $user = User::ofEmail($request->email)->first();
+            $user = User::ofEmail($request->email)->first() ?? null;
 
             return ApiResponseDTO::success(200, data: new AuthCollection(
                 [
@@ -63,6 +64,7 @@ class AuthController extends Controller
                 ]
             ))->toJson();
         } catch (Throwable $th) {
+            Log::error($th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage(),
